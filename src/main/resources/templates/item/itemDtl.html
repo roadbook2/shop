@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<head>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+
+<!-- 사용자 스크립트 추가 -->
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        $(document).ready(function(){
+
+            calculateToalPrice();
+
+            $("#count").change( function(){
+                calculateToalPrice();
+            });
+        });
+
+        function calculateToalPrice(){
+            var count = $("#count").val();
+            var price = $("#price").val();
+            var totalPrice = price*count;
+            $("#totalPrice").html(totalPrice + '원');
+        }
+
+    </script>
+</th:block>
+
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+    <style>
+        .mgb-15{
+            margin-bottom:15px;
+        }
+        .mgt-30{
+            margin-top:30px;
+        }
+        .mgt-50{
+            margin-top:50px;
+        }
+        .repImgDiv{
+            margin-right:15px;
+            height:auto;
+            width:50%;
+        }
+        .repImg{
+            width:100%;
+            height:400px;
+        }
+        .wd50{
+            height:auto;
+            width:50%;
+        }
+    </style>
+</th:block>
+
+<div layout:fragment="content" style="margin-left:25%;margin-right:25%">
+
+    <input type="hidden" id="itemId" th:value="${item.id}">
+
+    <div class="d-flex">
+        <div class="repImgDiv">
+            <img th:src="${item.itemImgDtoList[0].imgUrl}" class = "rounded repImg" th:alt="${item.itemNm}">
+        </div>
+        <div class="wd50">
+            <span th:if="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}" class="badge badge-primary mgb-15">
+                판매중
+            </span>
+            <span th:unless="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}" class="badge btn-danger mgb-15" >
+                품절
+            </span>
+            <div class="h4" th:text="${item.itemNm}"></div>
+            <hr class="my-4">
+
+            <div class="text-right">
+                <div class="h4 text-danger text-left">
+                    <input type="hidden" th:value="${item.price}" id="price" name="price">
+                    <span th:text="${item.price}"></span>원
+                </div>
+                <div class="input-group w-50">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">수량</span>
+                    </div>
+                    <input type="number" name="count" id="count" class="form-control" value="1" min="1">
+                </div>
+            </div>
+            <hr class="my-4">
+
+            <div class="text-right mgt-50">
+                <h5>결제 금액</h5>
+                <h3 name="totalPrice" id="totalPrice" class="font-weight-bold"></h3>
+            </div>
+            <div th:if="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}" class="text-right">
+                <button type="button" class="btn btn-light border border-primary btn-lg">장바구니 담기</button>
+                <button type="button" class="btn btn-primary btn-lg">주문하기</button>
+            </div>
+            <div th:unless="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}" class="text-right">
+                <button type="button" class="btn btn-danger btn-lg">품절</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid mgt-30">
+        <div class="container">
+            <h4 class="display-5">상품 상세 설명</h4>
+            <hr class="my-4">
+            <p class="lead" th:text="${item.itemDetail}"></p>
+        </div>
+    </div>
+
+    <div th:each="itemImg : ${item.itemImgDtoList}" class="text-center">
+        <img th:if="${not #strings.isEmpty(itemImg.imgUrl)}" th:src="${itemImg.imgUrl}" class="rounded mgb-15" width="800">
+    </div>
+
+</div>
+
+</html>
