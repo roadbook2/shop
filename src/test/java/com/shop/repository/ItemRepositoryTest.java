@@ -15,8 +15,8 @@ import java.util.List;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.shop.entity.QItem;
-import javax.persistence.PersistenceContext;
-import javax.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.EntityManager;
 
 import com.querydsl.core.BooleanBuilder;
 import org.springframework.data.domain.Page;
