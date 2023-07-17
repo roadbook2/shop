@@ -9,14 +9,14 @@ import com.shop.dto.ItemFormDto;
 import com.shop.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.PathVariable;
-import javax.persistence.EntityNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 
 import com.shop.dto.ItemSearchDto;
 import com.shop.entity.Item;
