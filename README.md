@@ -8,6 +8,10 @@
     - javax.persistence => jakarta.persistence
     - CustomAuthenticationEntryPoint.java (javax.servlet => jakarta.servlet)
     - Security 버전이 수정됨에 따라 기존 메소드가 deprecated 됐습니다. 최신 설정은 추후 올려두도록하겠습니다.
+  - layout1.html 파일 내용 수정
+    - thymeleaf layout 버전 증가에 따른 코드 수정 
+    - <div th:replace="fragments/header::header"></div>   =>   <div th:replace="~{fragments/header::header}"></div>
+    - <div th:replace="fragments/footer::footer"></div>   =>   <div th:replace="~{fragments/footer::footer}"></div>
 - 2022-06-26 branch 
    - 스프링부트 2.7.1 버전으로 업데이트
    - querydsl 5.0.0 버전으로 pom.xml 업데이트 및 ItemRepositoryCustomImpl의 fetchResults() deprecated 대응
