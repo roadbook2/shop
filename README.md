@@ -1,4 +1,8 @@
 # 1.변경사항
+- 스프링부트3(2024-08-17) branch
+  - 스프링부트 3.3.2 버전으로 업데이트
+  - 스프링시큐리티 설정 수정 (SecurityConfig, CustomAuthenticationEntryPoint -> CustomAuthenticationFailureHandler 수정)
+  - thymeleaf-layout-dialect 3.2.1 -> 3.3.0 버전업 진행
 - 스프링부트3(2023-07-17) branch
   - 스프링부트 3.1.1 버전으로 업데이트
   - 스프링부트3 버전부터는 자바 17버전 이상을 사용해야합니다.
