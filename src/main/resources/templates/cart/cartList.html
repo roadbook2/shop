@@ -63,7 +63,7 @@
                     /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
                     xhr.setRequestHeader(header, token);
                 },
-                dataType : "json",
+                dataType : "text",
                 cache   : false,
                 success  : function(result, status){
                     console.log("cartItem count update success");
@@ -74,7 +74,7 @@
                         alert('로그인 후 이용해주세요');
                         location.href='/members/login';
                     } else{
-                        alert(jqXHR.responseJSON.message);
+                        alert(jqXHR.responseText);
                     }
 
                 }
@@ -95,7 +95,7 @@
                     /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
                     xhr.setRequestHeader(header, token);
                 },
-                dataType : "json",
+                dataType : "text",
                 cache   : false,
                 success  : function(result, status){
                     location.href='/cart';
@@ -106,7 +106,7 @@
                         alert('로그인 후 이용해주세요');
                         location.href='/members/login';
                     } else{
-                        alert(jqXHR.responseJSON.message);
+                        alert(jqXHR.responseText);
                     }
 
                 }
@@ -142,7 +142,7 @@
                     /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
                     xhr.setRequestHeader(header, token);
                 },
-                dataType : "json",
+                dataType : "text",
                 cache   : false,
                 success  : function(result, status){
                     alert("주문이 완료 되었습니다.");
@@ -154,7 +154,7 @@
                         alert('로그인 후 이용해주세요');
                         location.href='/members/login';
                     } else{
-                        alert(jqXHR.responseJSON.message);
+                        alert(jqXHR.responseText);
                     }
 
                 }
