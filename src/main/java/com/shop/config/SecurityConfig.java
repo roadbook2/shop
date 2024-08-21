@@ -1,6 +1,9 @@
 package com.shop.config;
 
 import com.shop.service.MemberService;
+
+import jakarta.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,14 +34,17 @@ public class SecurityConfig {
                         .defaultSuccessUrl("/")
                         .usernameParameter("email")
                         .failureUrl("/members/login/error")
-                        .failureHandler(new CustomAuthenticationFailureHandler())
                 ).logout( logoutCustomizer -> logoutCustomizer
                         .logoutRequestMatcher(new AntPathRequestMatcher("/members/logout"))
                         .logoutSuccessUrl("/")
 
-                )
-                .build()
-        ;
+                ).exceptionHandling(exceptionHandlingCustomizer-> exceptionHandlingCustomizer.authenticationEntryPoint((request, response, authException) -> {
+                    if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
+                        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+                    } else {
+                        response.sendRedirect("/members/login/error");
+                    }})
+                ).build();
     }
 
     @Bean
