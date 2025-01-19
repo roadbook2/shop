@@ -48,7 +48,7 @@
                     /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
                     xhr.setRequestHeader(header, token);
                 },
-                dataType : "json",
+                dataType : "text",
                 cache   : false,
                 success  : function(result, status){
                     alert("주문이 완료 되었습니다.");
@@ -88,7 +88,7 @@
                     /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
                     xhr.setRequestHeader(header, token);
                 },
-                dataType : "json",
+                dataType : "text",
                 cache   : false,
                 success  : function(result, status){
                     alert("상품을 장바구니에 담았습니다.");
