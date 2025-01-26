@@ -1,4 +1,8 @@
 # 1.변경사항
+- 스프링 시큐리티 설정 수정 (2025-01-26)
+  - 상품 상세 페이지에서 order() 실행 시 비로그인 상태의 경우 http status 401로 응답이 되지 않는 버그 발견
+  - CustomAuthenticationEntryPoint 클래스 신규 생성 및 SecurityConfig 설정 추가
+  - CustomAuthenticationFailureHandler -> FormLoginAuthenticationFailureHandler 클래스명 리팩토링 진행
 - 스프링부트3(2024-08-17) branch
   - 스프링부트 3.3.2 버전으로 업데이트
   - 스프링시큐리티 설정 수정 (SecurityConfig, CustomAuthenticationEntryPoint -> CustomAuthenticationFailureHandler 수정)
