@@ -1,4 +1,6 @@
 # 1.변경사항
+- 스프링 시큐리티 설정 수정 (2025-02-03)
+  - 로그인 후 redirect 오류로 인한 SecurityConfig -> defaultSucceeUrl 항상 "/"로 가도록 true 설정 
 - 스프링 시큐리티 설정 수정 (2025-01-26)
   - 상품 상세 페이지에서 order() 실행 시 비로그인 상태의 경우 http status 401로 응답이 되지 않는 버그 발견
   - CustomAuthenticationEntryPoint 클래스 신규 생성 및 SecurityConfig 설정 추가

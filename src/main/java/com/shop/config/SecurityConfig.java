@@ -28,7 +28,7 @@ public class SecurityConfig {
                         .authenticated()
                 ).formLogin(formLoginCustomizer -> formLoginCustomizer
                         .loginPage("/members/login")
-                        .defaultSuccessUrl("/")
+                        .defaultSuccessUrl("/", true)
                         .usernameParameter("email")
                         .failureHandler(new FormLoginAuthenticationFailureHandler())
                 ).logout( logoutCustomizer -> logoutCustomizer
