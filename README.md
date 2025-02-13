@@ -1,4 +1,8 @@
 # 1.변경사항
+- 스프링 시큐리티 설정 수정 (2025-02-13)
+  - 애플리케이션 기동 후 첫 post에서 csrf 토큰이 생성되지 않는 문제 발견
+  - CsrfCookieFilter에서 csrfToken.getToken() 을 호출하여 csrf 토큰이 없는 경우 강제로 생성
+  - SecurityConfig에 CsrfCookieFilter 추가
 - 스프링 시큐리티 설정 수정 (2025-02-03)
   - 로그인 후 redirect 오류로 인한 SecurityConfig -> defaultSucceeUrl 항상 "/"로 가도록 true 설정 
   - SecurityConfig에서 csrfTokenRepository로 CookieCsrfTokenRepository 를 사용하도록 수정. 
